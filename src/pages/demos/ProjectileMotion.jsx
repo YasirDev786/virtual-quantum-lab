@@ -7,7 +7,7 @@ import { useTheme } from '../../context/ThemeContext'
 import { simulateProjectile } from '../../physics/ClassicalMechanics'
 import ProjectileVisualization from '../../components/visualizations/ProjectileVisualization'
 import ParameterControl from '../../components/ParameterControl'
-import PhysicsChart from '../../components/charts/PhysicsChart'
+import { ChartJSPhysicsChart as PhysicsChart } from '../../components/charts/ChartJSPhysicsChart'
 
 export const ProjectileMotion = () => {
   const navigate = useNavigate()

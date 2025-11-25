@@ -1,13 +1,14 @@
 import { Link, useLocation } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ThemeToggle } from './ThemeToggle'
+import { springConfigs } from '../utils/physicsAnimations'
 
 const navItems = [
   { path: '/', label: 'Home', icon: '🏠' },
   { path: '/simulations', label: 'Simulations', icon: '🔬' },
-  { path: '/builder', label: 'Experiment Builder', icon: '⚙️' },
   { path: '/learn', label: 'Learn', icon: '📚' },
   { path: '/about', label: 'About', icon: '🧭' },
+  { path: '/qrng', label: 'ANU QRNG', icon: '🌀' },
 ]
 
 export const Navbar = () => {
@@ -25,15 +26,23 @@ export const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
             <motion.div
-              whileHover={{ rotate: 360 }}
-              transition={{ duration: 0.6 }}
+              whileHover={{ 
+                rotate: 360,
+                scale: 1.2,
+              }}
+              whileTap={{ scale: 0.9 }}
+              transition={springConfigs.bouncy}
               className="text-2xl"
             >
               ⚛️
             </motion.div>
-            <span className="text-xl font-display font-bold gradient-text">
-              Quantum Vision
-            </span>
+            <motion.span 
+              className="text-xl font-display font-bold gradient-text"
+              whileHover={{ scale: 1.05 }}
+              transition={springConfigs.gentle}
+            >
+              Virtual Quantum Lab
+            </motion.span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -50,15 +59,32 @@ export const Navbar = () => {
                     <motion.div
                       layoutId="activeTab"
                       className="absolute inset-0 bg-primary-500/10 dark:bg-primary-500/20 rounded-lg"
-                      transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
+                      transition={springConfigs.bouncy}
                     />
                   )}
-                  <span className="relative flex items-center space-x-2 text-sm font-medium">
-                    <span>{item.icon}</span>
+                  <motion.span 
+                    className="relative flex items-center space-x-2 text-sm font-medium"
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={springConfigs.gentle}
+                  >
+                    <motion.span
+                      animate={isActive ? { 
+                        rotate: [0, 10, -10, 0],
+                        scale: [1, 1.2, 1],
+                      } : {}}
+                      transition={{
+                        duration: 0.6,
+                        repeat: isActive ? Infinity : 0,
+                        repeatDelay: 2,
+                      }}
+                    >
+                      {item.icon}
+                    </motion.span>
                     <span className={isActive ? 'text-primary-600 dark:text-primary-400' : 'text-gray-700 dark:text-gray-300'}>
                       {item.label}
                     </span>
-                  </span>
+                  </motion.span>
                 </Link>
               )
             })}

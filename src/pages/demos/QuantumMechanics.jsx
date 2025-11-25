@@ -7,7 +7,7 @@ import { useTheme } from '../../context/ThemeContext'
 import { calculateWaveFunction } from '../../physics/QuantumMechanics'
 import QuantumMechanicsVisualization from '../../components/visualizations/QuantumMechanicsVisualization'
 import ParameterControl from '../../components/ParameterControl'
-import PhysicsChart from '../../components/charts/PhysicsChart'
+import { ChartJSPhysicsChart as PhysicsChart } from '../../components/charts/ChartJSPhysicsChart'
 
 export const QuantumMechanics = () => {
   const navigate = useNavigate()

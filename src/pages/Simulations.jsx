@@ -3,6 +3,14 @@ import { useNavigate } from 'react-router-dom'
 
 const simulationCategories = [
   {
+    title: "Faraday's Law & Applications",
+    simulations: [
+      { name: "Electric Generator", status: 'Available', icon: '🔋', path: '/simulations/faradays-law' },
+      { name: "Transformer", status: 'Available', icon: '⚡', path: '/simulations/faradays-law' },
+      { name: "Induction Cooktop", status: 'Available', icon: '🔥', path: '/simulations/faradays-law' },
+    ],
+  },
+  {
     title: 'Classical Mechanics',
     simulations: [
       { name: 'Projectile Motion', status: 'Available', icon: '🎯', path: '/simulations/projectile-motion' },
@@ -29,14 +37,14 @@ const simulationCategories = [
     title: 'Quantum Mechanics',
     simulations: [
       { name: 'Probability Waves', status: 'Available', icon: '⚛️', path: '/simulations/quantum-mechanics' },
-      { name: 'Quantum Tunneling', status: 'Coming Soon', icon: '🚪', path: null },
+      { name: 'Quantum Tunneling', status: 'Available', icon: '🚪', path: '/simulations/quantum-tunneling' },
     ],
   },
   {
     title: 'Relativity',
     simulations: [
       { name: 'Time Dilation & Length Contraction', status: 'Available', icon: '⏱️', path: '/simulations/relativity' },
-      { name: 'Spacetime Diagrams', status: 'Coming Soon', icon: '📏', path: null },
+      { name: 'Spacetime Diagrams', status: 'Available', icon: '📏', path: '/simulations/spacetime-diagrams' },
     ],
   },
 ]

@@ -1,4 +1,4 @@
-# Quantum Vision - Physics Simulation Platform
+# Virtual Quantum Lab - Physics Simulation Platform
 
 A modern, browser-based physics simulation and visualization platform built with React, Three.js, and Tailwind CSS.
 

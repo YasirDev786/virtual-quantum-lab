@@ -6,7 +6,7 @@ import { OrbitControls } from '@react-three/drei'
 import { useTheme } from '../../context/ThemeContext'
 import { simulatePendulum } from '../../physics/ClassicalMechanics'
 import ParameterControl from '../../components/ParameterControl'
-import PhysicsChart from '../../components/charts/PhysicsChart'
+import { ChartJSPhysicsChart as PhysicsChart } from '../../components/charts/ChartJSPhysicsChart'
 
 /**
  * Pendulum Visualization Component

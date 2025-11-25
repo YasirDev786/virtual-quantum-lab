@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import AIAssistant from './AIAssistant'
 
 const topics = [
   {
@@ -88,22 +89,14 @@ export const Learn = () => {
           ))}
         </div>
 
-        {/* Coming Soon Section */}
+        {/* AI Physics Assistant */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-16 text-center"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          className="mt-16"
         >
-          <div className="glass rounded-2xl p-8 max-w-2xl mx-auto">
-            <div className="text-4xl mb-4">📚</div>
-            <h3 className="text-2xl font-display font-bold mb-2">
-              AI-Powered Learning Assistant
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              Coming soon: Get personalized explanations, answer questions, and receive insights about physics concepts
-            </p>
-          </div>
+          <AIAssistant />
         </motion.div>
       </div>
     </div>

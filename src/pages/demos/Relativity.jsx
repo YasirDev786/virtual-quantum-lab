@@ -7,7 +7,7 @@ import { useTheme } from '../../context/ThemeContext'
 import { calculateTimeDilation, calculateLorentzContraction } from '../../physics/Relativity'
 import RelativityVisualization from '../../components/visualizations/RelativityVisualization'
 import ParameterControl from '../../components/ParameterControl'
-import PhysicsChart from '../../components/charts/PhysicsChart'
+import { ChartJSPhysicsChart as PhysicsChart } from '../../components/charts/ChartJSPhysicsChart'
 
 export const Relativity = () => {
   const navigate = useNavigate()

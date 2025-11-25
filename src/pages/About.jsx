@@ -45,7 +45,7 @@ export const About = () => {
           className="text-center mb-16"
         >
           <h1 className="text-5xl md:text-6xl font-display font-bold mb-4">
-            <span className="gradient-text">About Quantum Vision</span>
+            <span className="gradient-text">About Virtual Quantum Lab</span>
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             A world-class, browser-based simulation lab designed to help visualize complex physics
@@ -62,7 +62,7 @@ export const About = () => {
         >
           <h2 className="text-3xl font-display font-bold mb-4">Our Mission</h2>
           <p className="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-            Quantum Vision aims to democratize physics education by providing a powerful,
+            Virtual Quantum Lab aims to democratize physics education by providing a powerful,
             accessible platform for visualizing and understanding physical phenomena. We believe
             that everyone should have access to high-quality scientific tools, regardless of
             their location or resources. Our platform helps students, teachers, and researchers
@@ -138,7 +138,7 @@ export const About = () => {
           <div className="glass rounded-2xl p-8">
             <h2 className="text-3xl font-display font-bold mb-4">Team & Contact</h2>
             <p className="text-gray-600 dark:text-gray-400 mb-6">
-              Quantum Vision is an open-source educational project
+              Virtual Quantum Lab is an open-source educational project
             </p>
             <p className="text-sm text-gray-500 dark:text-gray-500">
               For inquiries, contributions, or feedback, please reach out through our repository

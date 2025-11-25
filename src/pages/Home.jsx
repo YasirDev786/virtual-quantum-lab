@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { useTheme } from '../context/ThemeContext'
+import { PhysicsButton, PhysicsCard } from '../components/physics'
+import { springConfigs } from '../utils/physicsAnimations'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -115,7 +117,7 @@ export const Home = () => {
               variants={itemVariants}
               className="text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-6"
             >
-              <span className="gradient-text">Quantum Vision</span>
+              <span className="gradient-text">Virtual Quantum Lab</span>
             </motion.h1>
 
             <motion.p
@@ -138,22 +140,24 @@ export const Home = () => {
               className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
               <Link to="/simulations">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 bg-gradient-to-r from-primary-500 to-purple-500 text-white rounded-xl font-semibold text-lg shadow-lg shadow-primary-500/50 hover:shadow-xl hover:shadow-primary-500/50 transition-all duration-300"
+                <PhysicsButton
+                  variant="primary"
+                  size="lg"
+                  physicsType="bouncy"
+                  className="shadow-lg shadow-primary-500/50 hover:shadow-xl hover:shadow-primary-500/50"
                 >
                   Start Simulation
-                </motion.button>
+                </PhysicsButton>
               </Link>
               <Link to="/learn">
-                <motion.button
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-8 py-4 glass text-gray-700 dark:text-gray-200 rounded-xl font-semibold text-lg border-2 border-gray-200 dark:border-dark-700 hover:border-primary-500 dark:hover:border-primary-500 transition-all duration-300"
+                <PhysicsButton
+                  variant="outline"
+                  size="lg"
+                  physicsType="magnetic"
+                  className="border-2 border-gray-200 dark:border-dark-700 hover:border-primary-500 dark:hover:border-primary-500"
                 >
                   Explore Physics
-                </motion.button>
+                </PhysicsButton>
               </Link>
             </motion.div>
           </motion.div>
@@ -180,24 +184,48 @@ export const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {categories.map((category, index) => (
-              <motion.div
-                key={category.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ y: -10 }}
-                className="glass rounded-2xl p-6 card-hover cursor-pointer"
-              >
-                <div className="text-4xl mb-4">{category.icon}</div>
-                <h3 className="text-xl font-display font-bold mb-2">
-                  {category.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400">
-                  {category.description}
-                </p>
-                <div className={`mt-4 h-1 bg-gradient-to-r ${category.color} rounded-full`} />
-              </motion.div>
+              <Link key={category.title} to="/simulations">
+                <PhysicsCard
+                  hoverEffect={index % 2 === 0 ? 'lift' : 'magnetic'}
+                  className="h-full"
+                >
+                  <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ ...springConfigs.bouncy, delay: index * 0.1 }}
+                  >
+                    <motion.div 
+                      className="text-4xl mb-4"
+                      animate={{ 
+                        rotate: [0, 5, -5, 0],
+                        scale: [1, 1.1, 1],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        ease: 'easeInOut',
+                        delay: index * 0.2,
+                      }}
+                    >
+                      {category.icon}
+                    </motion.div>
+                    <h3 className="text-xl font-display font-bold mb-2">
+                      {category.title}
+                    </h3>
+                    <p className="text-gray-600 dark:text-gray-400">
+                      {category.description}
+                    </p>
+                    <motion.div 
+                      className={`mt-4 h-1 bg-gradient-to-r ${category.color} rounded-full`}
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ ...springConfigs.gentle, delay: index * 0.1 + 0.3 }}
+                    />
+                  </motion.div>
+                </PhysicsCard>
+              </Link>
             ))}
           </div>
         </div>
@@ -251,7 +279,7 @@ export const Home = () => {
             transition={{ delay: 0.1 }}
             className="text-xl text-white/90 mb-8"
           >
-            Start building your own experiments or explore pre-built simulations
+            Explore interactive physics simulations and learn with AI assistance
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -260,23 +288,15 @@ export const Home = () => {
             transition={{ delay: 0.2 }}
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Link to="/builder">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-white text-primary-600 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300"
-              >
-                Build Experiment
-              </motion.button>
-            </Link>
             <Link to="/simulations">
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                className="px-8 py-4 bg-transparent border-2 border-white text-white rounded-xl font-semibold text-lg hover:bg-white/10 transition-all duration-300"
+              <PhysicsButton
+                variant="outline"
+                size="lg"
+                physicsType="bouncy"
+                className="bg-transparent border-2 border-white text-white hover:bg-white/10"
               >
                 View Simulations
-              </motion.button>
+              </PhysicsButton>
             </Link>
           </motion.div>
         </div>

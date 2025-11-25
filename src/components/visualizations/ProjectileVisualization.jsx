@@ -1,25 +1,36 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
+import { MotionTrail } from './MotionTrail'
 
 /**
  * Projectile Motion Visualization Component
- * Displays projectile trajectory with real-time updates
+ * Displays projectile trajectory with real-time updates and motion trails
  */
 export const ProjectileVisualization = ({ 
   position, 
   velocity, 
   trajectory = [],
-  isRunning = false 
+  isRunning = false,
+  showMotionTrail = true,
 }) => {
   const projectileRef = useRef()
   const trailRef = useRef()
   const trajectoryLineRef = useRef()
+  const [trailPositions, setTrailPositions] = useState([])
 
-  // Update projectile position
+  // Update projectile position and trail
   useFrame(() => {
     if (projectileRef.current && position) {
       projectileRef.current.position.set(position.x, position.y, position.z)
+      
+      // Update motion trail
+      if (showMotionTrail && isRunning) {
+        setTrailPositions((prev) => {
+          const newTrail = [...prev, { x: position.x, y: position.y, z: position.z }]
+          return newTrail.slice(-150) // Keep last 150 points
+        })
+      }
     }
   })
 
@@ -46,6 +57,17 @@ export const ProjectileVisualization = ({
         <bufferGeometry />
         <lineBasicMaterial color="#4ecdc4" linewidth={2} />
       </line>
+
+      {/* Motion Trail */}
+      {showMotionTrail && isRunning && (
+        <MotionTrail
+          positions={trailPositions}
+          color="#4ecdc4"
+          maxLength={150}
+          fadeSpeed={0.98}
+          lineWidth={3}
+        />
+      )}
 
       {/* Ground plane */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.1, 0]}>

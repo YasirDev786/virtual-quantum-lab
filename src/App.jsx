@@ -3,7 +3,6 @@ import { ThemeProvider } from './context/ThemeContext'
 import { Navbar } from './components/Navbar'
 import { Home } from './pages/Home'
 import { Simulations } from './pages/Simulations'
-import { ExperimentBuilder } from './pages/ExperimentBuilder'
 import { Learn } from './pages/Learn'
 import { About } from './pages/About'
 import ProjectileMotion from './pages/demos/ProjectileMotion'
@@ -17,6 +16,11 @@ import ReflectionRefraction from './pages/demos/ReflectionRefraction'
 import Diffraction from './pages/demos/Diffraction'
 import QuantumMechanics from './pages/demos/QuantumMechanics'
 import Relativity from './pages/demos/Relativity'
+import QuantumTunneling from './pages/demos/QuantumTunneling'
+import SpacetimeDiagrams from './pages/demos/SpacetimeDiagrams'
+import FaradaysLaw from './pages/demos/FaradaysLaw'
+import QRNG from './pages/QRNG'
+import AIAssistant from './pages/AIAssistant'
 
 function App() {
   return (
@@ -36,10 +40,14 @@ function App() {
             <Route path="/simulations/reflection-refraction" element={<ReflectionRefraction />} />
             <Route path="/simulations/diffraction" element={<Diffraction />} />
             <Route path="/simulations/quantum-mechanics" element={<QuantumMechanics />} />
+            <Route path="/simulations/quantum-tunneling" element={<QuantumTunneling />} />
             <Route path="/simulations/relativity" element={<Relativity />} />
-            <Route path="/builder" element={<ExperimentBuilder />} />
+            <Route path="/simulations/spacetime-diagrams" element={<SpacetimeDiagrams />} />
+            <Route path="/simulations/faradays-law" element={<FaradaysLaw />} />
+            <Route path="/faradays-law" element={<FaradaysLaw />} />
             <Route path="/learn" element={<Learn />} />
             <Route path="/about" element={<About />} />
+            <Route path="/qrng" element={<QRNG />} />
           </Routes>
         </div>
       </Router>

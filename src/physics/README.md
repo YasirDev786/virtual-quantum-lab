@@ -1,6 +1,6 @@
 # Physics Engine Documentation
 
-This directory contains the modular physics simulation engine for Quantum Vision.
+This directory contains the modular physics simulation engine for Virtual Quantum Lab.
 
 ## Structure
 
