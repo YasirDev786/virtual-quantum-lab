@@ -2,10 +2,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ThemeProvider } from './context/ThemeContext'
 import { Navbar } from './components/Navbar'
 import { Footer } from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 import { Home } from './pages/Home'
 import { Simulations } from './pages/Simulations'
 import { Learn } from './pages/Learn'
-import { About } from './pages/About'
 import ProjectileMotion from './pages/demos/ProjectileMotion'
 import Pendulum from './pages/demos/Pendulum'
 import Collisions from './pages/demos/Collisions'
@@ -34,6 +34,7 @@ function App() {
   return (
     <ThemeProvider>
       <Router>
+        <ScrollToTop />
         <div className="relative min-h-screen bg-white dark:bg-dark-900 transition-colors duration-300 overflow-hidden">
           <QuantumEnvironment />
           <div className="relative z-10">
@@ -63,7 +64,6 @@ function App() {
             <Route path="/learn/quantum" element={<QuantumMechanicsLearning />} />
             <Route path="/learn/relativity" element={<RelativityLearning />} />
             <Route path="/qubit-ai" element={<QubitAI />} />
-            <Route path="/about" element={<About />} />
             <Route path="/qrng" element={<QRNG />} />
           </Routes>
           <Footer />
