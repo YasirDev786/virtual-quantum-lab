@@ -24,8 +24,9 @@ const Download = () => {
             </p>
             
             <motion.a
-              href="/Virtual%20Quantum%20Lab%20Setup%201.0.0.exe"
-              download
+              href="https://github.com/YasirDev786/virtual-quantum-lab/releases/download/v1.0.0/Virtual.Quantum.Lab.Setup.1.0.0.exe"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 bg-primary-600 hover:bg-primary-700 text-white rounded-xl font-semibold text-lg shadow-lg shadow-primary-500/30 flex items-center justify-center mx-auto space-x-3 inline-flex"
